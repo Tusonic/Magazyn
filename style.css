@@ -1,0 +1,377 @@
+body {
+background-color:#8B3E2F;
+font-family:Times;
+margin-top: 50px;
+margin-left: auto;
+margin-right: auto;
+width:960px;
+
+}
+
+naglowek {
+background-color: #F47D31;
+display:block;
+text-align:center;
+font:bold 50px Arial;
+word-spacing:30px;
+border:solid;
+border-color:#FFFFFF;
+}
+
+logowanie
+{
+margin-top: 20px;
+margin-left: auto;
+margin-right: auto;
+background-color: #F47D31;
+display:block;
+text-align:center;
+font-size: 20px;
+width: 700px;
+height:45px;
+border:solid;
+border-color:#FFFFFF;
+border-radius: 20px;
+text-align:center;
+padding-top:13px;
+}
+
+#przycisk_login{
+	font-family: Arial;
+	font-size: 19px;
+	color: #050505;
+	padding: 3px 20px;
+	background: -moz-linear-gradient(
+		top,
+		#00EE00 0%,
+		#00AA00);
+	background: -webkit-gradient(
+		linear, left top, left bottom,
+		from(#f7ff00),
+		to(#ffbf00));
+	
+	border: 1px solid #000000;
+	
+}
+
+
+
+.wpisywanie{
+    background: #f5f5f5;
+    font-size: 19px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border: none;
+    padding: 6px 30px;
+    width: 100px;
+    box-shadow: inset 0 2px 3px rgba( 0, 0, 0, 0.1 );
+    clear: both;
+}
+
+.wpisywanie:focus {
+    background: #fff;
+    box-shadow: 0 0 0 3px #006600, inset 0 2px 3px rgba( 0, 0, 0, 0.2 ), 0px 5px 5px rgba( 0, 0, 0, 0.15 );
+    outline: none;
+}
+
+.wpisywanie_dodaj_tasma{
+    background: #f5f5f5;
+    font-size: 14px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border: none;
+    padding: 6px 30px;
+    width: 120px;
+    box-shadow: inset 0 2px 3px rgba( 0, 0, 0, 0.1 );
+    clear: both;
+}
+
+.wpisywanie_dodaj_tasma:focus {
+    background: #fff;
+    box-shadow: 0 0 0 3px #006600, inset 0 2px 3px rgba( 0, 0, 0, 0.2 ), 0px 5px 5px rgba( 0, 0, 0, 0.15 );
+    outline: none;
+}
+
+.wpisywanie_select{
+    background: #f5f5f5;
+    font-size: 14px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border: none;
+    padding: 6px 30px;
+    width: 180px;
+    box-shadow: inset 0 2px 3px rgba( 0, 0, 0, 0.1 );
+    clear: both;
+}
+
+
+
+
+panel
+{
+margin-top: 20px;
+margin-left: auto;
+margin-right: auto;
+background-color: #CD8500;
+display:block;
+width:960px;
+height:350px;
+border:solid;
+border-color:#FFFFFF;
+border-radius: 50px;
+text-align:center;
+padding-top:10px;
+}
+
+/* START
+PANEL
+*/
+
+#tabelamenu
+{
+	margin:auto;
+	margin-top:10px;
+	padding:0px;
+	width:900px;
+	
+	border-collapse:collapse;
+	
+	
+}
+
+#tabelamenu  td
+{
+   text-align: center;
+   width: 225px; 
+   height:50px;
+   border-left:white solid;
+   border-right:white solid;
+   font-size: 22px;
+   
+}
+
+
+
+#przycisk_tak{
+	font-family: Arial;
+	width: 180px;
+	font-size: 19px;
+	color: #050505;
+	padding: 3px;
+	background: -moz-linear-gradient(
+		top,
+		#00EE00 0%,
+		#00AA00);
+	border: 1px solid #000000;
+	border-radius: 13px;
+	
+}
+#przycisk_tak:hover{
+background: -moz-linear-gradient(
+		top,
+		#00AA00 0%,
+		#00EE00);
+}
+
+#przycisk_nie{
+	font-family: Arial;
+	width: 180px;
+	font-size: 19px;
+	color: #050505;
+	padding: 3px;
+	background: -moz-linear-gradient(
+		top,
+		#EE2C2C 0%,
+		#8B1A1A);
+	border: 1px solid #000000;
+	border-radius: 13px;
+	
+}
+#przycisk_nie:hover{
+background: -moz-linear-gradient(
+		top,
+		#8B1A1A 0%,
+		#EE2C2C);
+}
+
+strona
+{
+margin-top: 20px;
+margin-left: auto;
+margin-right: auto;
+background-color: #CD8500;
+display:block;
+width:960px;
+height:auto;
+border:solid;
+border-color:#FFFFFF;
+border-radius: 15px;
+padding-top:10px;
+}
+
+#wyswietl_tabela
+{
+margin-top: 20px;
+margin-left: 20px;
+margin-right: 20px;
+margin-bottom:20px;
+width:920;
+height:auto;
+text-align:center;
+}
+
+
+
+#wyswietl_usun
+{
+margin-top: 20px;
+margin-left: 20px;
+margin-right: 20px;
+margin-bottom:20px;
+width:920;
+height:auto;
+text-align:center;
+font-size: 22px;
+}
+
+/* START
+TASMA - DODAJ 
+*/
+
+#tasma_dodaj
+{
+margin-top: 20px;
+margin-left: 20px;
+margin-right: 20px;
+margin-bottom:20px;
+width:920;
+height:auto;
+text-align:center;
+font-size: 22px;
+}
+
+#tabela_tasma_dodaj
+{
+	margin:auto;
+	margin-top:10px;
+	width: auto; 
+    height:auto;	
+}
+
+#tabela_tasma_dodaj td
+{
+   text-align: right;
+   width: auto; 
+   height:auto;
+   font-size: 22px;
+   
+}
+
+/* START
+KLIENT - DODAJ 
+*/
+
+#klient_dodaj
+{
+margin-top: 20px;
+margin-left: 20px;
+margin-right: 20px;
+margin-bottom:20px;
+width:920;
+height:auto;
+text-align:center;
+font-size: 22px;
+}
+
+#tabela_klient_dodaj
+{
+	margin:auto;
+	margin-top:10px;
+	width: auto; 
+    height:auto;	
+}
+
+#tabela_klient_dodaj td
+{
+   text-align: right;
+   width: auto; 
+   height:auto;
+   font-size: 22px;
+   
+}
+
+/* SZCZEGOLY 
+KLIENT TABELA */
+
+#tabela_klient_szczegoly
+{
+	margin:auto;
+	margin-top:10px;
+	width: auto; 
+    height:auto;	
+}
+
+#tabela_klient_szczegoly td
+{
+   text-align: center;
+   width: auto; 
+   height:auto;
+   font-size: 22px;
+   
+}
+
+/* START
+KONTA - DODAJ 
+*/
+
+#konto_dodaj
+{
+margin-top: 20px;
+margin-left: 20px;
+margin-right: 20px;
+margin-bottom:20px;
+width:920;
+height:auto;
+text-align:center;
+font-size: 22px;
+}
+
+#tabela_konto_dodaj
+{
+	margin:auto;
+	margin-top:10px;
+	width: auto; 
+    height:auto;	
+}
+
+#tabela_konto_dodaj td
+{
+   text-align: right;
+   width: auto; 
+   height:auto;
+   font-size: 22px;
+   
+}
+
+/* START
+TASMA - WARSZTAT 
+*/
+
+#tasma_warsztat
+{
+margin-top: 20px;
+margin-left: 20px;
+margin-right: 20px;
+margin-bottom:20px;
+width:920;
+height:auto;
+text-align:center;
+font-size: 22px;
+}
+
+span.tab{
+    padding: 0 10px; /* Or desired space*/
+}
