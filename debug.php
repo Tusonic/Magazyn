@@ -20,7 +20,7 @@ echo "TOMEK UPRAWNIENAI 1";
 else
 
 {
-echo "Erro";
+echo "Error";
 }
 
 
