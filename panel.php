@@ -82,7 +82,7 @@ echo"
 
 else
 
-if ($_SESSION["uprawnienia"] != "Administrator" and $_SESSION["uprawnienia"] != "Użytkownik" )
+if ($_SESSION["uprawnienia"] != "Administrator" or $_SESSION["uprawnienia"] != "Użytkownik" )
 {
 echo"
 

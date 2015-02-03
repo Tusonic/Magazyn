@@ -11,6 +11,13 @@ session_start();
 	</head>
 <body>
 
+<?php 
+if ($_SESSION["uprawnienia"] != "Administrator" and $_SESSION["uprawnienia"] != "Użytkownik" )
+{
+	Header ('Location: error.php');
+}
+
+?>
 
 
 <naglowek>
@@ -35,6 +42,8 @@ include('panel.php');
 
 <div id='wyswietl_tabela'>
 <?php
+
+
 
 include ("config.php");
 
@@ -71,6 +80,9 @@ if (mysql_num_rows($result) > 0) {
 } else {
       echo "No records found!";
 }
+
+
+
 
 ?>
 

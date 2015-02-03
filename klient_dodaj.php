@@ -11,6 +11,13 @@ session_start();
 	</head>
 <body>
 
+<?php 
+if ($_SESSION["uprawnienia"] != "Administrator" and $_SESSION["uprawnienia"] != "Użytkownik" )
+{
+	Header ('Location: error.php');
+}
+
+?> 
 
 
 <naglowek>
@@ -44,6 +51,9 @@ $procentmax = $wiersz['max'];
 
 mysql_close($connection);
 ?>
+
+
+
 
 <strona>
 <div id='klient_dodaj'>
@@ -103,6 +113,8 @@ if($imie and $nazwisko and $ulica) {
 
 ?>
 </div>
+
+
 </strona> 
 
 
