@@ -11,6 +11,13 @@ session_start();
 	</head>
 <body>
 
+<?php 
+if ($_SESSION["uprawnienia"] != "Administrator")
+{
+	Header ('Location: error.php');
+}
+
+?>
 
 
 <naglowek>

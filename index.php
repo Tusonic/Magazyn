@@ -46,7 +46,7 @@ echo "TOMEK1";
 
 ?>
 
-
+Login: 123 Pass: 123 = ADMIN Login: 321 Pass: 321 = USER
 
 
 <?php
