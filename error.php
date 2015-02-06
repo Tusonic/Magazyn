@@ -23,9 +23,7 @@ include('logowanie.php');
 </logowanie>
 
 <panel>
-</br></br>
 <img src="png/error.png" alt="ERROR" />
-</br></br>
 <form action='index.php' method='post'><input type='submit' class='submit' id='przycisk_tak' name='potwierdz' value='WRÓĆ'></form>
 </panel>
 </body>
