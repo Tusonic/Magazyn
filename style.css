@@ -1,5 +1,5 @@
 body {
-background-color:#8B3E2F;
+background-color:#DDDDDD;
 font-family:Times;
 margin-top: 50px;
 margin-left: auto;
@@ -9,13 +9,13 @@ width:960px;
 }
 
 naglowek {
-background-color: #F47D31;
+background-color: #BBBBBB;
 display:block;
 text-align:center;
 font:bold 50px Arial;
 word-spacing:30px;
 border:solid;
-border-color:#FFFFFF;
+border-color:#000000;
 }
 
 logowanie
@@ -23,14 +23,14 @@ logowanie
 margin-top: 20px;
 margin-left: auto;
 margin-right: auto;
-background-color: #F47D31;
+background-color: #BBBBBB;
 display:block;
 text-align:center;
 font-size: 20px;
 width: 700px;
 height:45px;
 border:solid;
-border-color:#FFFFFF;
+border-color:#000000;
 border-radius: 20px;
 text-align:center;
 padding-top:13px;
@@ -44,7 +44,7 @@ padding-top:13px;
 	background: -moz-linear-gradient(
 		top,
 		#00EE00 0%,
-		#00AA00);
+		#CCCCCC);
 	background: -webkit-gradient(
 		linear, left top, left bottom,
 		from(#f7ff00),
@@ -52,6 +52,13 @@ padding-top:13px;
 	
 	border: 1px solid #000000;
 	
+}
+
+#przycisk_login:hover{
+background: -moz-linear-gradient(
+		top,
+		#CCCCCC 0%,
+		#00EE00);
 }
 
 
@@ -115,12 +122,12 @@ panel
 margin-top: 20px;
 margin-left: auto;
 margin-right: auto;
-background-color: #CD8500;
+background-color: #BBBBBB;
 display:block;
 width:960px;
 height:350px;
 border:solid;
-border-color:#FFFFFF;
+border-color:#000000;
 border-radius: 50px;
 text-align:center;
 padding-top:10px;
@@ -164,7 +171,7 @@ PANEL
 	background: -moz-linear-gradient(
 		top,
 		#00EE00 0%,
-		#00AA00);
+		#CCCCCC);
 	border: 1px solid #000000;
 	border-radius: 13px;
 	
@@ -172,7 +179,7 @@ PANEL
 #przycisk_tak:hover{
 background: -moz-linear-gradient(
 		top,
-		#00AA00 0%,
+		#CCCCCC 0%,
 		#00EE00);
 }
 
@@ -185,7 +192,7 @@ background: -moz-linear-gradient(
 	background: -moz-linear-gradient(
 		top,
 		#EE2C2C 0%,
-		#8B1A1A);
+		#CCCCCC);
 	border: 1px solid #000000;
 	border-radius: 13px;
 	
@@ -193,7 +200,7 @@ background: -moz-linear-gradient(
 #przycisk_nie:hover{
 background: -moz-linear-gradient(
 		top,
-		#8B1A1A 0%,
+		#CCCCCC 0%,
 		#EE2C2C);
 }
 
@@ -202,12 +209,12 @@ strona
 margin-top: 20px;
 margin-left: auto;
 margin-right: auto;
-background-color: #CD8500;
+background-color: #BBBBBB;
 display:block;
 width:960px;
 height:auto;
 border:solid;
-border-color:#FFFFFF;
+border-color:#000000;
 border-radius: 15px;
 padding-top:10px;
 }

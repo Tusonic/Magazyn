@@ -46,6 +46,37 @@ include('panel.php');
 
 
 
+
+
+<?php
+include ("config.php");
+
+	
+	if( isset($_GET['warsztat']) )
+	{
+	$id = $_GET['warsztat'];
+	$sql = "SELECT * FROM tasma where id=$id";
+	$result = mysql_query($sql) or die ("ERROR: " . mysql_error() . " (query was $sql)");
+	$row = mysql_fetch_array($result);
+	}
+  
+  	
+  	if( isset($_POST['new_nazwa']) )
+  	{
+  			$new_id   = $_POST['new_id'];  
+     		$new_nazwa = $_POST['new_nazwa'];
+     		$new_szerokosc = $_POST['new_szerokosc'];
+     		$new_dlugosc = $_POST['new_dlugosc'];    
+     		
+     		$sql	  = "UPDATE tasma SET nazwa='$new_nazwa', szerokosc='$new_szerokosc',dlugosc='$new_dlugosc'WHERE id='$new_id'";
+			 if($sql) echo "</br>Rekord został edytowany poprawnie";
+    else echo "</br>Rekord został edytowany niepoprawnie";
+     		$result	  = mysql_query($sql) or die("Nie mozna zaktualizowac danych".mysql_error());
+	//	echo  "<meta http-equiv='refresh' content='0;url=admin_user.php'>";     	
+        }
+	mysql_close($connection);
+?>
+
 <?php
  
  include ("config.php");
@@ -61,25 +92,6 @@ $procentmax = $wiersz['max'];
 
 mysql_close($connection);
 ?>
-
-<?php
-include ("config.php");
-
-	
-	if( isset($_GET['warsztat']) )
-	{
-	$id = $_GET['warsztat'];
-	$sql = "SELECT * FROM tasma where id=$id";
-	$result = mysql_query($sql) or die ("ERROR: " . mysql_error() . " (query was $sql)");
-	$row = mysql_fetch_array($result);
-	}
-	
-	mysql_close($connection);
-	
-	?>
-
-
-
 
 Wymiary aktualnej taśmy:</br>
 Szerokość: <?php echo $row[2]; ?></br>
@@ -97,9 +109,6 @@ Podaj wymiary aktualnej taśmy po przecięciu:</br>
 </br>
 
 
-
-
-
 NOWA TAŚMA </br>
 Podaj wymiary dla nowej taśmy:</br></br>
 Numer jaki będzie posiadać: <?php echo $procentmax + 1 ; ?>
@@ -112,70 +121,44 @@ Numer jaki będzie posiadać: <?php echo $procentmax + 1 ; ?>
 
 <input type="submit" id="przycisk_tak" value="PRZYTNIJ">
 
-
 </form>
 
 
 
-
+  
 
 
 <?php
-			$new_id   = $_POST['new_id'];  
-			$new_nazwa = $_POST['new_nazwa'];
-     		$new_szerokosc = $_POST['new_szerokosc'];
-     		$new_dlugosc = $_POST['new_dlugosc'];   
+$nazwa = (isset($_POST['nazwa'])); 
+$szerokosc = (isset($_POST['szerokosc'])); 
+$dlugosc = (isset($_POST['dlugosc'])); 
 
-			if($new_szerokosc and $new_dlugosc) {
-     		 
-			include ("config.php");
-			 
-     		$sql	  = "UPDATE tasma SET nazwa='$new_nazwa', szerokosc='$new_szerokosc',dlugosc='$new_dlugosc'WHERE id='$new_id'";
-     		$result	  = mysql_query($sql) or die("Nie mozna zaktualizowac danych".mysql_error());
- 	
-        
-	mysql_close($connection);
-	}
-	?>
-
-
-
+if($szerokosc and $dlugosc) {
+   
+   include ("config.php");
 	
-	
-<?php
-
-		$nazwa = (isset($_POST['nazwa'])); 
-		$szerokosc = (isset($_POST['szerokosc'])); 
-		$dlugosc = (isset($_POST['dlugosc'])); 
-
-		if($szerokosc and $dlugosc) {
-
-  		include ("config.php");
-	
-		// dodajemy rekord do bazy
-		$ins = @mysql_query ("INSERT INTO tasma(nazwa, szerokosc, dlugosc) VALUES ('$_POST[nazwa]','$_POST[szerokosc]','$_POST[dlugosc]')");
+	// dodajemy rekord do bazy
+    $ins = @mysql_query ("INSERT INTO tasma(nazwa, szerokosc, dlugosc) VALUES ('$_POST[nazwa]','$_POST[szerokosc]','$_POST[dlugosc]')");
  
-		if($ins)
-				{ 
-					header('Location: rekord_warsztat_1.php');
-				}
-			else 
-				{
-					header('Location: rekord_warsztat_0.php');
-				};
+    if($ins)
+	{ 
+	header('Location: rekord_warsztat_1.php');
+	}
+    else 
+	{
+	header('Location: rekord_warsztat_0.php');
+	};
 	
-	    
+	
+    
     mysql_close($connection);
 }
+
 
 ?>
 
 
-
-
-<?php	
-
-/*	{{{ TEN KOD DZIAŁA ALE WYKONUJE SIĘ POWYŻSZY KOD A JAK GO DAM WYŻEJ TO NIEDZIAŁA :(((	
+<?php			
 			
 $form1=$_POST['new_szerokosc'];
 $form2=$_POST['szerokosc'];
@@ -217,12 +200,15 @@ if (preg_match('/[0-9]/', $form4 ))
 	
 
 }
-*/
+
   ?>
 
 
 </div>
 
+<?php
+include('skrypt.php');
+?>
 
 </strona>
 
