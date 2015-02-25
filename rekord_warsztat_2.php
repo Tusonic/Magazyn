@@ -50,7 +50,7 @@ mysql_close($connection);
 
 <div id='tasma_dodaj'>
 <form action='tasma_warsztat.php' method='post'>
-Błędnie podane dane w formularzu.</br>
+Nowa taśma nie może być po przycięciu dłuższa niż stara taśma.</br>
 </br>
 
 <input type="submit" id="przycisk_tak" value="WRÓĆ"></form>

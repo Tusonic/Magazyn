@@ -49,7 +49,7 @@ mysql_close($connection);
 
 
 <div id='tasma_dodaj'>
-<form action='index.php' method='post'>
+<form action='tasma_dodaj.php' method='post'>
 Błąd w dodaniu rekordu !!!</br>
 </br>
 

@@ -91,8 +91,8 @@ Podaj wymiary aktualnej taśmy po przecięciu:</br>
 <table id='tabela_tasma_dodaj'>
 <tr><td>Numer taśmy:</td><td> <input  type="text" class="wpisywanie_dodaj_tasma" name="new_id" value="<?php echo $row[0]; ?>"></td></tr>
 <tr><td>Nazwa:</td><td><input  type="text" class="wpisywanie_dodaj_tasma" name="new_nazwa" value="<?php echo $row[1]; ?>"></td></tr>
-<tr><td>Szerkosć:</td><td><input placeholder="w milimetrach"  type="text" class="wpisywanie_dodaj_tasma" name="new_szerokosc" pattern="[0-9]*" required  ></td></tr>
-<tr><td>Długość:</td><td><input  placeholder="w milimetrach" type="text" class="wpisywanie_dodaj_tasma" name="new_dlugosc"  pattern="[0-9]*" required></td></tr>
+<tr><td>Szerkosć:</td><td><input placeholder="w milimetrach"  type="text" class="wpisywanie_dodaj_tasma" name="new_szerokosc"   ></td></tr>
+<tr><td>Długość:</td><td><input  placeholder="w milimetrach" type="text" class="wpisywanie_dodaj_tasma" name="new_dlugosc"  ></td></tr>
 </table>
 </br>
 
@@ -105,46 +105,78 @@ Podaj wymiary dla nowej taśmy:</br></br>
 Numer jaki będzie posiadać: <?php echo $procentmax + 1 ; ?>
 <table id='tabela_tasma_dodaj'>
 <tr><td>Nazwa taśmy:</td><td> <input  type="text" class="wpisywanie_dodaj_tasma" name="nazwa" value="<?php echo $row[1]; ?>" /></td></tr>
-<tr><td>Szerokość</td><td><input placeholder="w milimetrach"  type='text' class="wpisywanie_dodaj_tasma" name="szerokosc" pattern="[0-9]*" required/></td></tr>
-<tr><td>Długość:</td><td><input placeholder="w milimetrach"  type='text' class="wpisywanie_dodaj_tasma" name="dlugosc"  pattern="[0-9]*"required /></td></tr>
+<tr><td>Szerokość</td><td><input placeholder="w milimetrach"  type='text' class="wpisywanie_dodaj_tasma" name="szerokosc" /></td></tr>
+<tr><td>Długość:</td><td><input placeholder="w milimetrach"  type='text' class="wpisywanie_dodaj_tasma" name="dlugosc"   /></td></tr>
 </table>
 </br></br>
 
 
 
-<input type="submit" id="przycisk_tak" value="PRZYTNIJ">
-<?php
-			$new_id   = (isset($_POST['new_id']));  
-			$new_nazwa = (isset($_POST['new_nazwa']));
-     		$new_szerokosc = (isset($_POST['new_szerokosc']));
-     		$new_dlugosc = (isset($_POST['new_dlugosc']));  
+<input type="submit" name="submit" id="przycisk_tak" value="PRZYTNIJ" >
 
-			$nazwa = (isset($_POST['nazwa'])); 
-			$szerokosc = (isset($_POST['szerokosc'])); 
-			$dlugosc = (isset($_POST['dlugosc']));		
-			
-			if ($new_szerokosc and $new_dlugosc and $szerokosc and $dlugosc )
-			{
-		 		 
-			include ("config.php");
-			 
-     		$sql	  = "UPDATE tasma SET nazwa='$new_nazwa', szerokosc='$new_szerokosc',dlugosc='$new_dlugosc'WHERE id='$new_id'";
-     		$result	  = mysql_query($sql) or die("Nie mozna zaktualizowac danych".mysql_error());
-			
-			$ins = @mysql_query ("INSERT INTO tasma(nazwa, szerokosc, dlugosc) VALUES ('$_POST[nazwa]','$_POST[szerokosc]','$_POST[dlugosc]')");
-			if($ins)
-				{ 
-					header('Location: rekord_warsztat_1.php');
-				}
-			else 
+<!-- TUTAJ -->
+
+
+<?php
+			$new_id   = $_POST['new_id'];  
+			$new_nazwa = $_POST['new_nazwa'];
+     		$new_szerokosc = $_POST['new_szerokosc'];
+     		$new_dlugosc = $_POST['new_dlugosc'];  
+
+			$nazwa = $_POST['nazwa']; 
+			$szerokosc = $_POST['szerokosc']; 
+			$dlugosc = $_POST['dlugosc'];	
+			 							
+	
+			if(!empty($_POST['submit']))
+				
+		{
+	
+			if (!$new_szerokosc || !$new_dlugosc || !$szerokosc || !$dlugosc || 
+					preg_match('/[A-Za-z]/', $szerokosc) || 
+					preg_match('/[A-Za-z]/', $new_szerokosc) ||
+					preg_match('/[A-Za-z]/', $dlugosc ) ||
+					preg_match('/[A-Za-z]/', $new_dlugosc) ||
+					preg_match('/[A-Za-z]/', $new_id) 
+					)
+				
 				{
 					header('Location: rekord_warsztat_0.php');
-				};
-        
-	mysql_close($connection);
-	
-	}
+				}
+			else
+				
+			if($szerokosc > $new_szerokosc || $dlugosc > $new_dlugosc	)
+				
+				{
+					header('Location: rekord_warsztat_2.php');
+				}
+				else
+			{
+			
+			
+				{
+		 		 
+				include ("config.php");
+			 
+				$sql	  = "UPDATE tasma SET nazwa='$new_nazwa', szerokosc='$new_szerokosc',dlugosc='$new_dlugosc'WHERE id='$new_id'";
+				$result	  = mysql_query($sql) or die("Nie mozna zaktualizowac danych".mysql_error());
 		
+					
+				$ins = @mysql_query ("INSERT INTO tasma(nazwa, szerokosc, dlugosc) VALUES ('$_POST[nazwa]','$_POST[szerokosc]','$_POST[dlugosc]')");
+				if($ins)
+					{ 
+						header('Location: rekord_warsztat_1.php');
+					}
+				else 
+					{
+					header('Location: rekord_warsztat_0.php');
+					};
+        
+		
+	mysql_close($connection);
+				}
+			}
+		}
 	
 	?>
 

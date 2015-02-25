@@ -59,26 +59,6 @@ include ("config.php");
 	}
   
   	
-  	if( isset($_POST['new_nazwa']) )
-  	{
-  			$new_id   = $_POST['new_id'];  
-     		$new_nazwa = $_POST['new_nazwa'];
-     		$new_szerokosc = $_POST['new_szerokosc'];
-     		$new_dlugosc = $_POST['new_dlugosc'];    
-     		
-     		$sql	  = "UPDATE tasma SET nazwa='$new_nazwa', szerokosc='$new_szerokosc',dlugosc='$new_dlugosc'WHERE id='$new_id'";
-			 if($sql) 
-			 {
-	header('Location: rekord_edytuj_1.php');
-	}
-    else 
-	{
-	header('Location: rekord_edytuj_0.php');
-	};
-     		$result	  = mysql_query($sql) or die("Nie mozna zaktualizowac danych".mysql_error());
-	//	echo  "<meta http-equiv='refresh' content='0;url=admin_user.php'>";     	
-        }
-	mysql_close($connection);
 ?>
 
 <form action="edytuj.php" method="POST">
@@ -90,8 +70,57 @@ include ("config.php");
 </table>
 </br>
 
-<input  type="submit" id="przycisk_login" value=" Aktualizuj ">
+<input  type="submit" name="submit" id="przycisk_login" value=" Aktualizuj ">
 </form>
+
+<?php
+
+			$new_id   = $_POST['new_id'];  
+     		$new_nazwa = $_POST['new_nazwa'];
+     		$new_szerokosc = $_POST['new_szerokosc'];
+     		$new_dlugosc = $_POST['new_dlugosc'];   
+			
+		
+		
+		if(!empty($_POST['submit']))
+			
+		{
+			if (!$new_szerokosc || !$new_dlugosc || !$new_nazwa|| !$new_id ||
+					preg_match('/[A-Za-z]/', $new_szerokosc) || 
+					preg_match('/[A-Za-z]/', $new_dlugosc) ||
+					preg_match('/[A-Za-z]/', $new_id) )
+					
+					{
+						header('Location: rekord_edytuj_0.php');
+					}			
+		
+		else
+			
+			
+			{
+  			 
+				$sql	  = "UPDATE tasma SET nazwa='$new_nazwa', szerokosc='$new_szerokosc',dlugosc='$new_dlugosc'WHERE id='$new_id'";
+				$result  = mysql_query($sql) or die("Nie mozna zaktualizowac danych".mysql_error()); 
+			 
+				if($sql) 
+				{
+				header('Location: rekord_edytuj_1.php');
+				}
+			
+				else 
+				
+				{
+				header('Location: rekord_edytuj_0.php');
+				};
+     		   	
+			}
+			
+		}	
+			
+			
+	mysql_close($connection);
+	
+	?>
 
 
 

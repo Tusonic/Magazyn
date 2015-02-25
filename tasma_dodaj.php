@@ -69,32 +69,46 @@ Nowo dodana taśmą będzie posiadała numer: <?php echo $procentmax + 1 ; ?>
 </table>
 </br>
 
-<input type="submit" id="przycisk_tak" value="DODAJ"></form>
+<input type="submit" name="submit" id="przycisk_tak" value="DODAJ"></form>
 
 <?php
-$nazwa = (isset($_POST['nazwa'])); 
-$szerokosc = (isset($_POST['szerokosc'])); 
-$dlugosc = (isset($_POST['dlugosc'])); 
 
-if($nazwa and $szerokosc and $dlugosc) {
-   
-   include ("config.php");
-	
-	// dodajemy rekord do bazy
-    $ins = @mysql_query ("INSERT INTO tasma(nazwa, szerokosc, dlugosc) VALUES ('$_POST[nazwa]','$_POST[szerokosc]','$_POST[dlugosc]')");
- 
-    if($ins) {
-	header('Location: rekord_dodaj_1.php');
-	}
-    else 
+$nazwa = $_POST['nazwa']; 
+$szerokosc = $_POST['szerokosc']; 
+$dlugosc = $_POST['dlugosc']; 
+
+	if(!empty($_POST['submit'])) 
 	{
-	header('Location: rekord_dodaj_0.php');
-	};
 	
+		if (!$szerokosc || !$dlugosc ||
+			preg_match('/[A-Za-z]/', $szerokosc) || 
+			preg_match('/[A-Za-z]/', $dlugosc) )
+					
+		{
+			header('Location: rekord_dodaj_0.php');					
+		}
+		else
+										
 	
-    
+		{
+	include ("config.php");
+	
+		// dodajemy rekord do bazy
+		$ins = @mysql_query ("INSERT INTO tasma(nazwa, szerokosc, dlugosc) VALUES ('$_POST[nazwa]','$_POST[szerokosc]','$_POST[dlugosc]')");
+ 
+		if($ins)
+			{
+			header('Location: rekord_dodaj_1.php');
+			}
+			else 
+			{
+			header('Location: rekord_dodaj_0.php');
+			};
+	
+		}
     mysql_close($connection);
-}
+	
+	}
 
 
 ?>
