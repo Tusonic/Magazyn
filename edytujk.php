@@ -59,32 +59,7 @@ include ("config.php");
 	}
   
   	
-  	if( isset($_POST['new_nazwisko']) )
-  	{
-  			$new_id   = $_POST['new_id'];  
-     		$new_imie= $_POST['new_imie'];
-     		$new_nazwisko = $_POST['new_nazwisko'];
-     		$new_firma = $_POST['new_firma'];  
-			$new_ulica = $_POST['new_ulica'];   
-			$new_miasto = $_POST['new_miasto'];   
-			$new_kod = $_POST['new_kod'];   			
-			$new_telefon = $_POST['new_telefon'];  
-			$new_mail = $_POST['new_mail'];  
-     		
-     		$sql	  = "UPDATE klient SET imie='$new_imie', nazwisko='$new_nazwisko', firma='$new_firma', ulica='$new_ulica', miasto='$new_miasto', kod='$new_kod' , telefon='$new_telefon' , mail='$new_mail' WHERE id='$new_id'";
-			 
-			 if($sql) {
-	header('Location: rekord_edytuj_1.php');
-	}
-    else 
-	{
-	header('Location: rekord_edytuj_0.php');
-	};
-	
-     		$result	  = mysql_query($sql) or die("Nie mozna zaktualizowac danych".mysql_error());
-	//	echo  "<meta http-equiv='refresh' content='0;url=admin_user.php'>";     	
-        }
-	mysql_close($connection);
+  	
 ?>
 
 <form action="edytujk.php" method="POST">
@@ -103,10 +78,63 @@ include ("config.php");
 </table>
 </br>
 
-<input  type="submit" id="przycisk_login" value=" Aktualizuj ">
+<input  type="submit" name="submit" id="przycisk_login" value=" Aktualizuj ">
 </form>
 
+<?php
 
+
+			$new_id   = $_POST['new_id'];  
+     		$new_imie= $_POST['new_imie'];
+     		$new_nazwisko = $_POST['new_nazwisko'];
+     		$new_firma = $_POST['new_firma'];  
+			$new_ulica = $_POST['new_ulica'];   
+			$new_miasto = $_POST['new_miasto'];   
+			$new_kod = $_POST['new_kod'];   			
+			$new_telefon = $_POST['new_telefon'];  
+			$new_mail = $_POST['new_mail']; 
+
+
+		if(!empty($_POST['submit']))
+			
+			{
+			if (!$new_id || !$new_imie || !$new_nazwisko || !$new_firma || !$new_ulica || !$new_miasto || !$new_kod || !$new_telefon || $new_mail ||
+					preg_match('/[A-Za-z]/', $new_id) || 
+					preg_match('/[A-Za-z]/', $new_imie) ||
+					preg_match('/[A-Za-z]/', $new_nazwisko) ||
+					preg_match('/[0-9]/', $new_kod) ||
+					preg_match('/[0-9]/', $new_telefon) 
+					
+					)
+					
+					{
+						header('Location: rekord_edytujk_0.php');
+					}		
+
+				else
+					
+				
+				{
+  			 
+     		
+     		$sql	  = "UPDATE klient SET imie='$new_imie', nazwisko='$new_nazwisko', firma='$new_firma', ulica='$new_ulica', miasto='$new_miasto', kod='$new_kod' , telefon='$new_telefon' , mail='$new_mail' WHERE id='$new_id'";
+			$result	  = mysql_query($sql) or die("Nie mozna zaktualizowac danych".mysql_error());
+			if($sql)
+			{
+			header('Location: rekord_edytujk_1.php');
+			}
+			else 
+			{
+			header('Location: rekord_edytujk_0.php');
+			};
+	
+    
+	   	
+				}
+			}
+	mysql_close($connection);
+				
+	?>
 
 </div>
 

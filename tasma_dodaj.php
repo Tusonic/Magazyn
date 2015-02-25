@@ -64,8 +64,8 @@ Nowo dodana taśmą będzie posiadała numer: <?php echo $procentmax + 1 ; ?>
 <table id='tabela_tasma_dodaj'>
 
 <tr><td>Podaj nazwe taśmy:</td> <td><input type='text' class="wpisywanie_dodaj_tasma" name='nazwa' /></td></tr>
-<tr><td>Podaj szerokość:</td> <td><input type='text' class="wpisywanie_dodaj_tasma" name='szerokosc' /></td></tr>
-<tr><td>Podaj długość:</td> <td><input type='text' class="wpisywanie_dodaj_tasma" name='dlugosc' /></td></tr>
+<tr><td>Podaj szerokość:</td> <td><input placeholder="w milimetrach"  type='text' class="wpisywanie_dodaj_tasma" name='szerokosc' /></td></tr>
+<tr><td>Podaj długość:</td> <td><input placeholder="w milimetrach"  type='text' class="wpisywanie_dodaj_tasma" name='dlugosc' /></td></tr>
 </table>
 </br>
 

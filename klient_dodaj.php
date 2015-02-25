@@ -76,39 +76,59 @@ Nowo dodany klient będzie posiadała numer: <?php echo $procentmax + 1 ; ?>
 </table>
 </br>
 
-<input type="submit" id="przycisk_tak" value="DODAJ"></form>
+<input type="submit" name='submit' id="przycisk_tak" value="DODAJ"></form>
 
 <?php
-$imie = (isset($_POST['imie'])); 
-$nazwisko = (isset($_POST['nazwisko'])); 
-$firma = (isset($_POST['firma'])); 
-$ulica = (isset($_POST['ulica'])); 
-$miasto = (isset($_POST['miasto'])); 
-$kod = (isset($_POST['kod'])); 
-$telefon = (isset($_POST['telefon'])); 
-$mail = (isset($_POST['mail'])); 
+$imie = $_POST['imie']; 
+$nazwisko = ($_POST['nazwisko']); 
+$firma = $_POST['firma']; 
+$ulica = $_POST['ulica']; 
+$miasto = $_POST['miasto']; 
+$kod = $_POST['kod']; 
+$telefon = $_POST['telefon']; 
+$mail = $_POST['mail']; 
 
-if($imie and $nazwisko and $ulica) {
-   
-   include ("config.php");
+	if(!empty($_POST['submit'])) 
+
+	{
 	
-	// dodajemy rekord do bazy
-    $ins = @mysql_query ("INSERT INTO klient(imie, nazwisko, firma, ulica, miasto, kod, telefon, mail) VALUES ('$_POST[imie]','$_POST[nazwisko]','$_POST[firma]','$_POST[ulica]','$_POST[miasto]','$_POST[kod]','$_POST[telefon]','$_POST[mail]')");
+
+		if (!$imie || !$nazwisko || !$firma || !$ulica || !$miasto || !$kod || !$telefon || !$mail 
+		||
+	    preg_match('/[0-9]/', $imie) || 
+		preg_match('/[0-9]/', $nazwisko) ||
+		preg_match('/[0-9]/', $miasto) || 
+	    preg_match('/[A-Za-z]/', $kod) ||
+		preg_match('/[A-Za-z]/', $telefon)
+		)
+	
+	{
+		
+				header('Location: rekord_dodajk_0.php');	
+		
+	}
+	
+	else
+	
+	
+		{
+		include ("config.php");
+	
+		// dodajemy rekord do bazy
+		$ins = @mysql_query ("INSERT INTO klient(imie, nazwisko, firma, ulica, miasto, kod, telefon, mail) VALUES ('$_POST[imie]','$_POST[nazwisko]','$_POST[firma]','$_POST[ulica]','$_POST[miasto]','$_POST[kod]','$_POST[telefon]','$_POST[mail]')");
  
-    if($ins) 
-	{
-	header('Location: rekord_dodaj_1.php');
-	}
-    else 
-	{
-	header('Location: rekord_dodaj_0.php');
-	}
-;
-	
-	
-    
+		if($ins) 
+		{
+		header('Location: rekord_dodaj_1.php');
+		}
+		else 
+		{
+		header('Location: rekord_dodaj_0.php');
+		};
+	 
     mysql_close($connection);
-}
+		}
+	}
 
 
 ?>
