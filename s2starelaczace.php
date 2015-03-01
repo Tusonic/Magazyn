@@ -47,18 +47,13 @@ include('panel.php');
 <?php
 
 	$_SESSION["s2tasma"] = $_GET['s2'];
-	
-	$zmiennatasma = $_SESSION["s2tasma"];
-	
  
   echo "Wydanie taśmy </br>Wybrałeś klienta o numerze: ".$_SESSION["s1klient"]."";
   echo "</br>Wybrałeś taśmę o numerze: ".$_SESSION["s2tasma"]."";
   echo "</br>Jesteś zalogowany jako ".$_SESSION["slogin"]."</br>";
  //  echo "</br>ID Uzytkownika: ".$_SESSION["sid"]."";
 	
-  $zmiennatasma = $_SESSION["s2tasma"];
-  $zmiennaklient = $_SESSION["s1klient"];
-  $zmiennalogin = $_SESSION["slogin"];
+  
 	
 ?>
 <form action='#' method='post'>
@@ -78,72 +73,24 @@ $( "#accordion" ).accordion();
 	
 </script>
 
-<!-- SYSTEM PRZENOSZENIA DANYCH -->
 
-<?php
-
-
-include ("config.php");
-
-$sql2 = "SELECT * FROM tasma WHERE id = '$zmiennatasma' ";
-$result2 = mysql_query($sql2) or die ("ERROR: " . mysql_error() . " (query was $sql2)");
-
-
-
-
-if (mysql_num_rows($result2) > 0) {
-     
-	 while($row = mysql_fetch_row($result2)) {
-		 $zmiennatasmaid = $row[0];
-         $zmiennatasmanazwa = $row[1];
-		 $zmiennatasmaszerokosc = $row[2];
-		 $zmiennatasmadlugosc = $row[3];
-     }
-	
-} 
-
-
-
-$sql3 = "SELECT * FROM klient WHERE id = '$zmiennaklient' ";
-$result3 = mysql_query($sql3) or die ("ERROR: " . mysql_error() . " (query was $sql3)");
-
-
-if (mysql_num_rows($result3) > 0) {
-     
-	 while($row = mysql_fetch_row($result3)) {
-         $zmiennaklientid = $row[0];
-		 $zmiennaklientimie = $row[1];
-		 $zmiennaklientnazwisko = $row[2];
-     }
-	
-} 
-/*
-echo"debager:</br>";
-
-echo"$zmiennatasmaid";
-echo"$zmiennatasmanazwa";
-echo"$zmiennatasmaszerokosc";
-echo"$zmiennatasmadlugosc";
-
-echo"$zmiennaklientid";
-echo"$zmiennaklientimie";
-echo"$zmiennaklientnazwisko";
-
-echo"$zmiennalogin";
-
-*/
-?>
 
 
 <?php
 
+if(isset($_POST['wykonaj']))
+{
 $data = $_POST['data'];
-if(!empty($_POST['wykonaj']))  {
+$tasmadodaj = (isset($_SESSION['s2tasma'])); 
+$klientdodaj = (isset($_SESSION['s1klient'])); 
+$id = (isset($_SESSION["slogin"])); 
+
+if($tasmadodaj and $klientdodaj and $id) {
    
    include ("config.php");
 	
 	// dodajemy rekord do bazy
-    $ins = @mysql_query ("INSERT INTO sprzedaz VALUES ('','$zmiennatasmaid','$zmiennatasmanazwa','$zmiennatasmaszerokosc','$zmiennatasmadlugosc','$zmiennaklientid','$zmiennaklientimie','$zmiennaklientnazwisko','$zmiennalogin','$data')");
+    $ins = @mysql_query ("INSERT INTO sprzedaz VALUES ('','$_SESSION[s2tasma]','$_SESSION[s1klient]','$_SESSION[sid]','$data')");
  
     if($ins){
 	header('Location: rekord_sprzedaj_1.php');
@@ -157,7 +104,7 @@ if(!empty($_POST['wykonaj']))  {
     
     mysql_close($connection);
 }
-
+}
 ?>
 
 

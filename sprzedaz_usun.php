@@ -46,18 +46,22 @@ include('panel.php');
 
 include ("config.php");
 
-$sql = "SELECT sprzedaz.id, tasma.nazwa, klient.imie, klient.nazwisko, konto.login, sprzedaz.data FROM tasma, sprzedaz, konto, klient WHERE sprzedaz.idtasma = tasma.id AND sprzedaz.idkonto = konto.id AND sprzedaz.idklient = klient.id";
+$sql = "SELECT * FROM sprzedaz";
 $result = mysql_query($sql) or die ("ERROR: " . mysql_error() . " (query was $sql)");
 
 	
 if (mysql_num_rows($result) > 0) {
  echo "<table id='table_id' class='display'><thead><tr>
-					<td>ID</td>
-		  			<td>Taśma</td>
+					
+					<td>ID Sprzedazy</td>
+		  			<td>ID Tasmy</td>
+					<td>Nazwa Tasmy</td>
+				
 					<td>Imie</td>
 					<td>Nazwisko</td>
+					<td>Konto</td>
 					<td>Data</td>
-					<td>Operacja</td>
+					
 					
 					
 					
@@ -69,7 +73,12 @@ if (mysql_num_rows($result) > 0) {
 		  			<td>$row[1]</td>
 					<td>$row[2]</td>
 					<td>$row[3]</td>
-					<td>$row[5]</td>
+					
+				
+					<td>$row[7]</td>
+					<td>$row[8]</td>
+					<td>$row[9]</td>
+					<td>$row[10]</td>
 					<td><a href='usuns.php?usuns=$row[0]'><img src='png/usun.png' alt='Usun' /></a></td>
 				
 					</tr>";
