@@ -48,7 +48,6 @@ include ("config.php");
 $sql = "SELECT * FROM sprzedaz";
 $result = mysql_query($sql) or die ("ERROR: " . mysql_error() . " (query was $sql)");
 
-echo "<h1><-- MODUŁ W TRAKCIE MODERNIZACJI --></h1></br>";
 	
 if (mysql_num_rows($result) > 0) {
  echo "<table id='table_id' class='display'><thead><tr>
@@ -65,13 +64,13 @@ if (mysql_num_rows($result) > 0) {
 					</tr></thead><tbody>";
      
 	 while($row = mysql_fetch_row($result)) {
-          echo "<tr class='odd gradeA'><td>$row[0]</td>
-		  		
+          echo "<tr class='odd gradeA'>
+		  
+					<td>$row[0]</td>
 		  			<td>$row[1]</td>
 					<td>$row[2]</td>
-					<td>$row[3]</td>
 					
-				
+					<td>$row[6]</td>
 					<td>$row[7]</td>
 					<td>$row[8]</td>
 					<td>$row[9]</td>

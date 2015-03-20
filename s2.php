@@ -144,7 +144,7 @@ if(!empty($_POST['wykonaj']))  {
 	
 	// dodajemy rekord do bazy
     $ins = @mysql_query ("INSERT INTO sprzedaz VALUES ('','$zmiennatasmaid','$zmiennatasmanazwa','$zmiennatasmaszerokosc','$zmiennatasmadlugosc','$zmiennaklientid','$zmiennaklientimie','$zmiennaklientnazwisko','$zmiennalogin','$data')");
- 
+	$ins2 = @mysql_query ("DELETE FROM tasma WHERE id='$zmiennatasmaid'");
     if($ins){
 	header('Location: rekord_sprzedaj_1.php');
 	}
@@ -159,6 +159,9 @@ if(!empty($_POST['wykonaj']))  {
 }
 
 ?>
+
+
+
 
 
 
