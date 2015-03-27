@@ -39,7 +39,7 @@ echo"
 ";
 }
 
-if ($_SESSION["uprawnienia"] == "Użytkownik")
+elseif ($_SESSION["uprawnienia"] == "Użytkownik")
 {
 
 echo"

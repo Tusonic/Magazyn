@@ -117,6 +117,19 @@ if (mysql_num_rows($result3) > 0) {
      }
 	
 } 
+
+$sql4 = "SELECT * FROM konto WHERE login = '$zmiennalogin' ";
+$result4 = mysql_query($sql4) or die ("ERROR: " . mysql_error() . " (query was $sql3)");
+
+
+if (mysql_num_rows($result4) > 0) {
+     
+	 while($row = mysql_fetch_row($result4)) {
+         $zmiennaloginid = $row[0];
+		 $zmiennaloginnazwa = $row[1];
+     }
+	
+} 
 /*
 echo"debager:</br>";
 
@@ -143,8 +156,9 @@ if(!empty($_POST['wykonaj']))  {
    include ("config.php");
 	
 	// dodajemy rekord do bazy
-    $ins = @mysql_query ("INSERT INTO sprzedaz VALUES ('','$zmiennatasmaid','$zmiennatasmanazwa','$zmiennatasmaszerokosc','$zmiennatasmadlugosc','$zmiennaklientid','$zmiennaklientimie','$zmiennaklientnazwisko','$zmiennalogin','$data')");
-	$ins2 = @mysql_query ("DELETE FROM tasma WHERE id='$zmiennatasmaid'");
+    $ins = @mysql_query ("INSERT INTO sprzedaz (`idtasma`, `tasmanazwa`, `tasmaszerokosc`, `tasmadlugosc`, `idklient`, `klientimie`, `klientnazwisko`, `idkonto`, `kontologin`, `data`) VALUES ('$zmiennatasmaid','$zmiennatasmanazwa','$zmiennatasmaszerokosc','$zmiennatasmadlugosc','$zmiennaklientid','$zmiennaklientimie','$zmiennaklientnazwisko','$zmiennaloginid','$zmiennaloginnazwa','$data')");
+	//$ins2 = @mysql_query ("DELETE FROM tasma WHERE id='$zmiennatasmaid'");
+	$ins2 = @mysql_query ("UPDATE tasma SET dostepna = '1' WHERE id='$zmiennatasmaid'");
     if($ins){
 	header('Location: rekord_sprzedaj_1.php');
 	}

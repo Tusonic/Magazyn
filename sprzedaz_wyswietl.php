@@ -51,11 +51,13 @@ $result = mysql_query($sql) or die ("ERROR: " . mysql_error() . " (query was $sq
 	
 if (mysql_num_rows($result) > 0) {
  echo "<table id='table_id' class='display'><thead><tr>
-					<td>ID Sprzedazy</td>
-		  			<td>ID Tasmy</td>
+					<td>ID S.</td>
+		  			<td>ID T.</td>
+					<td>ID K.</td>
+					
 					<td>Nazwa Tasmy</td>
-				
-				
+					<td>Wymiary</td>
+					
 					<td>Imie</td>
 					<td>Nazwisko</td>
 					<td>Konto</td>
@@ -68,11 +70,13 @@ if (mysql_num_rows($result) > 0) {
 		  
 					<td>$row[0]</td>
 		  			<td>$row[1]</td>
-					<td>$row[2]</td>
+					<td>$row[8]</td>
+					
+					<td>$row[8]</td>
+					<td>$row[3] X $row[4]</td>
 					
 					<td>$row[6]</td>
 					<td>$row[7]</td>
-					<td>$row[8]</td>
 					<td>$row[9]</td>
 					<td>$row[10]</td>
 				
