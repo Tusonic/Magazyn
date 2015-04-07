@@ -46,7 +46,7 @@ include('panel.php');
 
 include ("config.php");
 
-$sql = "SELECT id, nazwa, szerokosc, dlugosc FROM tasma";
+$sql = "SELECT id, nazwa, szerokosc, dlugosc FROM tasma WHERE dostepna = '0'";
 $result = mysql_query($sql) or die ("ERROR: " . mysql_error() . " (query was $sql)");
 
 	
